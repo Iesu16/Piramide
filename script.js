@@ -6,7 +6,9 @@
             path: document.getElementById("path"),
         },
         init: () => {
-            GeneratePyramid.htmlElements.levels.addEventListener("input", GeneratePyramid.updatePyramid);
+            const calcularButton = document.getElementById("Calcular"); 
+            calcularButton.addEventListener("click", GeneratePyramid.updatePyramid); 
+
             GeneratePyramid.updatePyramid();
         },
         updatePyramid: () => {
@@ -32,23 +34,23 @@
             console.log(input1);
             let matrix = GeneratePyramid.getMatrixFromTriangle(input1);
             let solvedMatrix = GeneratePyramid.getSolvedMatrix(GeneratePyramid.copyMatrix(matrix), 0);
-            console.log("matrix2");
+         /* console.log("matrix2");
             console.table(matrix);
             console.log("solved");
-            console.table(solvedMatrix);
+            console.table(solvedMatrix);*/
             let maxLengthArr = GeneratePyramid.getLongestPathArr(solvedMatrix, matrix);
 
-            console.log("arr", maxLengthArr);
+            //console.log("arr", maxLengthArr);
             GeneratePyramid.htmlElements.path.innerHTML = GeneratePyramid.drawPath(maxLengthArr);
             GeneratePyramid.highlightLongestPath(matrix, maxLengthArr);
         },
         getMatrixFromTriangle(input) {
-            //en este caso sera estatico el triangulo inicial 
+  
             let array = input.split(/[ ]+/);
             let matrix = [];
-            // console.log("input", input);
+
             let j = 1;
-            //matrix stuff
+      
             let accIndex = 0;
             while (true) {
                 accIndex += j;
@@ -68,9 +70,13 @@
                 j += 1;
             }
 
+
             let max = matrix[matrix.length - 1].length;
+
             i = 0;
+
             while (i < matrix.length) {
+   
                 j = matrix[i].length;
                 while (j < max) {
 
@@ -96,7 +102,7 @@
                 col = 0;
 
                 while (col < row) {
-
+     
                     if (order == 0) {
                         valueOfComparison = GeneratePyramid.getMaxVal(newMatrix[row][col], newMatrix[row][col + 1])
 
@@ -114,6 +120,7 @@
         getLongestPathArr(solvedMatrix, matrix) {
             let pathArray = [];
             let row = 0, col = 0, searchValue;
+
             while (row < solvedMatrix.length) {
 
                 pathArray.push(matrix[row][col])
@@ -124,10 +131,11 @@
                     if (solvedMatrix[row + 1][col] != searchValue) {
                         col += 1
                     }
+
                 }
                 row++;
             }
-
+            // console.log(pathArray);
             return pathArray;
         },
         getMaxVal(a, b) {
@@ -161,14 +169,14 @@
             let sum = 0;
             while (i < pathArr.length - 1) {
                 sum += pathArr[i];
-                drawnPath += `<span class="path-item">${pathArr[i]}</span><span class="path-item">&#10148;</span>`;
+                drawnPath += `<span class="path-item squarer">${pathArr[i]}</span> `;
                 i++;
             }
-            drawnPath += `<span class="path-item">${pathArr[pathArr.length - 1]}</span>
-                        <span class="path-item">=</span> 
-                        <span class="path-item">${sum + pathArr[pathArr.length - 1]}</span>`;
-
-            return `${drawnPath}`;
+            drawnPath += `<span class="path-item squarer">${pathArr[pathArr.length - 1]}</span>
+                            <span class="path-item ">=</span> 
+                            <span class="path-item squarer">${sum + pathArr[pathArr.length - 1]}</span>`;
+        
+            return drawnPath;
         },
        
         highlightLongestPath(matrix, path) {
@@ -182,7 +190,7 @@
                     const square = squares[i];
         
                     if (matrix[j][i] === path[j]) {
-                        square.style.backgroundColor = 'pink';
+                        square.style.backgroundColor = 'rgb(201, 131, 39)';
                     }
                 }
             }
@@ -191,4 +199,9 @@
     };
 
     GeneratePyramid.init();
+    refreshButton.addEventListener("click", function() {
+        const currentLevels = parseInt(GeneratePyramid.htmlElements.levels.value, 10);
+        
+        GeneratePyramid.updatePyramid();
+    });
 })();
