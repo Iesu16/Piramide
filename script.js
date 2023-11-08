@@ -68,14 +68,9 @@
                 j += 1;
             }
 
-            // console.table(matrix)
-            //making matrix
             let max = matrix[matrix.length - 1].length;
-
             i = 0;
-            //zero fill
             while (i < matrix.length) {
-                //para bajar la complejidad de n^2
                 j = matrix[i].length;
                 while (j < max) {
 
@@ -96,14 +91,11 @@
 
 
             let row = newMatrix.length - 1, col = 0, valueOfComparison;
-            //vamos a loopear por cada row existente de la matriz
+
             while (row > 0) {
                 col = 0;
-                //luego loopeamos por cada valor de la columna menos el row que estamos.
-                // row 1 [1, 1, 0] nada mas loopeara por los valores de 1 y 1.
+
                 while (col < row) {
-                    /*nos vamos a el row anterior y buscamos el
-                     valor minimo en el row inferior */
 
                     if (order == 0) {
                         valueOfComparison = GeneratePyramid.getMaxVal(newMatrix[row][col], newMatrix[row][col + 1])
@@ -122,27 +114,20 @@
         getLongestPathArr(solvedMatrix, matrix) {
             let pathArray = [];
             let row = 0, col = 0, searchValue;
-            //colocamos el primer valor (obvio) en el path como inicio. 
             while (row < solvedMatrix.length) {
 
                 pathArray.push(matrix[row][col])
                 searchValue = solvedMatrix[row][col] - matrix[row][col];
 
-                //el ultimo valor tiene como nulo la derecha asi que no se realiza.
                 if (row != solvedMatrix.length - 1) {
-                    //si el valor es igual al que buscamos, entonces se cambia el col.
-                    //por la forma de la piramide representada a la izq de  la matriz.
+
                     if (solvedMatrix[row + 1][col] != searchValue) {
                         col += 1
                     }
-
-                    //si los valore de la izq y derecha son iguales, se deberia repetir esta
-                    //funcion para buscar el arreglo por debajo de ellos a ver cual de ellos
-                    //da la suma correcta al final.
                 }
                 row++;
             }
-            // console.log(pathArray);
+
             return pathArray;
         },
         getMaxVal(a, b) {
