@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Pirámide</h1>
     <section>
-        <h1>Pirámide</h1>
-
         <div class="start">
             <label for="levels">Cantidad de filas</label>
             <input type="number" id="levels" min="1" max="5" value="1">
-            <div><button onclick="drawPyramid()">Dibujar</button></div>
+            <div id="Calcular"><button onclick="GeneratePyramid.updatePyramid()">Calcular</button></div>
         </div>
-        <span id="path">Camino</span>
         <div id="pyramid"></div>
+        <div><button id="refreshButton">Refresh</button></div>
     </section>
+    <div><span id="path"></span></div>
     <script src="script.js"></script>
 </body>
 </html>
