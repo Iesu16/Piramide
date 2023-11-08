@@ -28,14 +28,14 @@
                 }
                 pyramid.appendChild(row);
             }
-            let matrix = GeneratePyramid.getMatrixFromTriangle(input1);
+            let matrix = GeneratePyramid.makeMatrix(input1);
             let solvedMatrix = GeneratePyramid.getSolvedMatrix(GeneratePyramid.copyMatrix(matrix));
-            console.table(solvedMatrix);
-            let maxLengthArr = GeneratePyramid.getLongestPathArr(solvedMatrix, matrix);
+            //console.table(solvedMatrix);
+            let maxLengthArr = GeneratePyramid.maxPath(solvedMatrix, matrix);
             GeneratePyramid.htmlElements.path.innerHTML = GeneratePyramid.drawPath(maxLengthArr);
-            GeneratePyramid.highlightLongestPath(matrix, maxLengthArr);
+            GeneratePyramid.highlightMaxtPath(matrix, maxLengthArr);
         },
-        getMatrixFromTriangle(input) {
+        makeMatrix(input) {
             let array = input.split(/[ ]+/);
             let matrix = [];
             let j = 1;
@@ -77,7 +77,7 @@
             }
             return newMatrix;
         },
-        getLongestPathArr(solvedMatrix, matrix) {
+        maxPath(solvedMatrix, matrix) {
             let pathArray = [];
             let row = 0, col = 0, searchValue;
             while (row < solvedMatrix.length) {
@@ -123,7 +123,7 @@
                             <span class="path-item squarer">${sum + pathArr[pathArr.length - 1]}</span>`;
             return drawnPath;
         },
-        highlightLongestPath(matrix, path) {
+        highlightMaxtPath(matrix, path) {
             const pyramidRows = document.querySelectorAll('.row');      
             for (let j = 0; j < path.length; j++) {
                 const row = pyramidRows[j];
