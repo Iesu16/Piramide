@@ -1,9 +1,8 @@
 const boton_caja = document.querySelector(".form-btn-dibujar");
 const articulo_derecho = document.getElementById('box_container');
-const maxima_fila = 60;
+const maxima_fila = 100;
 const maxima_rand = 100;
 const minima_rand = 1;
-
 
 const generar_piramide = (quantity) => {
 
@@ -72,21 +71,10 @@ const dibujar_piramide = (array, selector) =>{
     return HTMLPiramide;
 }
 
-const encontrar_valores = (array, sFila, sPosicion ) =>{
-
-    let ruta = [];
-    
-    ruta = array.filter( (elemento) => {
-        return elemento[1] >= sFila && elemento[2] === sPosicion;
-    });
-
-    return ruta;
-
-}
-
 /***
  * esta funcion sirve para sumar arreglos en el formato general de este programa el cual es valor, fila, columna
  */
+
 const sumar_arreglo = ( array ) => {
 
     let sumatoria = 0;
@@ -96,29 +84,6 @@ const sumar_arreglo = ( array ) => {
     });
 
     return sumatoria;
-
-}
-
-const obtener_fila = ( array, fila ) => {
-
-    let arreglo = [];
-
-    arreglo = array.filter( (elemento) => {
-        return elemento[1] === fila;
-    });
-
-    return arreglo;
-}
-
-const buscar_valor = ( array, fila, posicion ) => {
-
-    let arreglo = [];
-
-    arreglo = array.filter( (elemento) => {
-        return elemento[1] === fila && elemento[2] === posicion;
-    });
-
-    return arreglo;
 
 }
 
@@ -192,7 +157,6 @@ const generar_piramide_rutas = ( array_inicial, array_rutas ) => {
 
 }
 
-
 /** PROCEDIMIENTO GENERAL
  * 1. analizar cuantas cajas hay en la fila
  * 2. si hay mas de 1 caja quiere decir que esa caja es el padre, sino continuar
@@ -211,27 +175,10 @@ const generar_piramide_rutas = ( array_inicial, array_rutas ) => {
  * COMO TAMBIEN LOS EVENTOS QUE EL USUARIO EMITE, CON EL BOTON DEL FORMULARIO
  * 
 */
-//array[][]
 
-const getSolvedMatrix = (inputMatrix) => {
-    let newMatrix = inputMatrix;
-    let row = newMatrix.length - 1, col = 0, valueOfComparison;
-    
-    while (row > 0) {
-        col = 0;
-        while (col < row) {
-            if( newMatrix[row][col]>newMatrix[row][col + 1]){
-                valueOfComparison = newMatrix[row][col]; }
-                else {
-                    valueOfComparison = newMatrix[row][col + 1]
-                }
-                newMatrix[row - 1][col] += valueOfComparison;
-            col += 1;
-        }
-        row--;
-    }
-    return newMatrix;
-}
+/**
+ *  \/ \/ \/ CONVERGENCIA DE LOS CODIGOS \/ \/ \/
+ * */ 
 
 const convertir_arreglo_1M = (arregloUnidimensional) => {
     
@@ -264,6 +211,26 @@ const convertir_arreglo_1M = (arregloUnidimensional) => {
     return arregloMultidimensional;
 }
 
+const getSolvedMatrix = (inputMatrix) => {
+    let newMatrix = inputMatrix;
+    let row = newMatrix.length - 1, col = 0, valueOfComparison;
+    
+    while (row > 0) {
+        col = 0;
+        while (col < row) {
+            if( newMatrix[row][col]>newMatrix[row][col + 1]){
+                valueOfComparison = newMatrix[row][col]; }
+                else {
+                    valueOfComparison = newMatrix[row][col + 1]
+                }
+                newMatrix[row - 1][col] += valueOfComparison;
+            col += 1;
+        }
+        row--;
+    }
+    return newMatrix;
+}
+
 const maxPath = (solvedMatrix, matrix) => {
     let pathArray = [];
     let row = 0, col = 0, searchValue;
@@ -283,93 +250,28 @@ const maxPath = (solvedMatrix, matrix) => {
     return pathArray;
 }
 
-
-
-
+/**
+ *  /\/\/\ CONVERGENCIA DE LOS CODIGOS /\/\/\
+ * */ 
 
 
 const main = (value) => {
         
     let arreglo = generar_piramide(value); // value, fila, columna
     let html = dibujar_piramide(arreglo, 1); // genera el html
-    
     let ruta = []; // arreglo de 1 dimension
-    
-   
 
     articulo_derecho.innerHTML = html;
-    
-    // codigo detecta la ruta mas pesada, 
-    /*
-    for(let fila = 0; fila <= arreglo[ arreglo.length - 1 ][1]; fila++ ){
-        //console.log("fila:" + ( fila + 1) );
-
-        if( obtener_fila( arreglo, fila ).length > 1 ){
-            
-            // console.log( obtener_fila( arreglo, fila ) );
-            // analizar las 3 rutas, para determinar cual es el padre correcto.
-            let fila_inicial = padre_anterior[0];
-            fila_inicial = fila_inicial[1] + 1;
-            //console.log(fila_inicial);
-        
-            let posicion = padre_anterior[0][2];
-            let rutas = [];
-            let valorMayor = 0;
-            let rutaAlta = 0;
-            maxPath
-            //alert( buscar_valor(arreglo, padre_anterior[0][1] + 1, padre_anterior[0][2] )[0][0]);
-            //alert( buscar_valor(arreglo, padre_anterior[0][1] + 1, padre_anterior[0][2] + 1)[0][0]);
-            
-
-            rutas.push( sumar_arreglo( encontrar_valores(arreglo, fila_inicial + 1, posicion )) + buscar_valor(arreglo, padre_anterior[0][1] + 1, padre_anterior[0][2] )[0][0]);
-            
-            posicion = posicion + 1;
-            rutas.push( sumar_arreglo( encontrar_valores(arreglo, fila_inicial + 1, posicion )) + buscar_valor(arreglo, padre_anterior[0][1] + 1, padre_anterior[0][2] )[0][0]);
-            rutas.push( sumar_arreglo( encontrar_valores(arreglo, fila_inicial + 1, posicion )) + buscar_valor(arreglo, padre_anterior[0][1] + 1, padre_anterior[0][2] + 1)[0][0]);         
-            
-            posicion = posicion + 1;
-            rutas.push( sumar_arreglo( encontrar_valores(arreglo, fila_inicial + 1, posicion )) + buscar_valor(arreglo, padre_anterior[0][1] + 1, padre_anterior[0][2] + 1)[0][0]);
-
-            // ENCONTRAR EL VALOR MAXIMO DE LAS 4 RUTAS Y LA RUTA CORRESPONDIENTE.
-            valorMayor = Math.max(...rutas);
-            rutaAlta = rutas.indexOf(valorMayor) + 1;
-
-            if( rutaAlta == 1 || rutaAlta == 2){
-                padre_anterior = buscar_valor(arreglo, padre_anterior[0][1] + 1, padre_anterior[0][2] );
-            }
-
-            if( rutaAlta == 3  || rutaAlta == 4){
-                padre_anterior = buscar_valor(arreglo, padre_anterior[0][1] + 1, padre_anterior[0][2] + 1);
-                
-            }
-
-            ruta.push(padre_anterior[0]);
-            
-            //console.log('ruta_1: ' + rutas[0] + ' ruta_2: ' + rutas[1] + ' ruta_3: ' + rutas[2] );
-            //console.log('valor mayor: ' + valorMayor + "Encontrado en el indice: " +  rutaAlta  );
-        
-        }else{
-        
-            padre_anterior = obtener_fila( arreglo, fila );
-            ruta.push( padre_anterior[0] );
-        }
-
-
-    }
-    */
-    
+  
     let matrix = convertir_arreglo_1M(arreglo); 
     let copia_matrix = convertir_arreglo_1M(arreglo); 
     
     ruta = maxPath( getSolvedMatrix(copia_matrix), matrix ); // resultado ruta mas pesada.
 
-   
-   
     cargar_resultados(ruta, 'contenedor_ruta');
     arreglo_con_rutas = generar_piramide_rutas(arreglo, ruta); // value, fila, columna
     html = dibujar_piramide ( arreglo_con_rutas, 2); // value, fila, columna, 1: si es ruta 0: si no es ruta
     articulo_derecho.innerHTML = html;
-
 
 }
 
