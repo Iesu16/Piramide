@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>PARCIAL 3 - DESA. SOFT 3</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="icon" type="image/x-icon" href="./favicon.png" />
+    </head>
+    <body>
+       
+        <section class="contenedor-principal">
+
+            <nav class="articulo-izquierdo shadow-8dp" id="articulo_izquierdo">
+                <div class="contenedor-formulario">
+                    <form class="formulario-entradas" onsubmit="return false;" id="fomulario-app">
+                        
+                        <h1 class="form-title"> Cantidad de filas:</h1>
+                        <input class="form-input" type="number" id="boxNumber" name="cantidad-filas" required minlength="4" maxlength="8" size="10" />
+                        <button class="form-btn-dibujar shadow-4dp" onclick="calcularBTN()"> DIBUJAR </button>
+
+                    </form>
+                </div>
+
+                <div class = 'contenedor-ruta' id="contenedor_ruta">
+
+                </div>
+            </nav>
+    
+            <article class="articulo-derecho" id="box_container">
+                
+                <div class="row" > 
+                    <div class="page-boxs shadow-4dp"></div>
+                </div>
+                
+                <div class="row">
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                </div>
+
+                <div class="row">
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                </div>
+
+                <div class="row">
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                </div>
+
+                <div class="row">
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+
+                </div>
+
+                <div class="row">
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+                    <div class="page-boxs shadow-4dp"></div>
+
+                </div>
+
+            </article>
+
+            <button class="reloadBTN shadow-8dp" onclick="calcularBTN()"> &#8634; </button>
+
+        </section>
+
+        <script src="./src/index.js" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,255 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
+
+* {
+    margin: unset;
+    padding: unset;
+    box-sizing: border-box;
+   
+}
+
+body{
+    background-color: bisque;
+    font-family: 'Montserrat', sans-serif;
+    zoom: 25%;
+    
+
+}
+
+.contenedor-principal {
+    
+    color:black;
+    display: flex;
+    
+    border-style: none;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    
+    gap:100px;
+    padding: 50px;
+
+}
+
+.articulo-derecho{
+
+    gap: 20px;
+    padding: 20px;
+    width: 500vw;
+   
+    display: flex;
+    border-style: none;
+    
+    justify-content: row;
+    flex-direction: column;
+    z-index: -2;
+
+    align-items: center;
+    justify-content: center;
+    margin-left: 70vw;
+    
+    
+
+}
+
+.articulo-izquierdo {
+    
+    width: 70vw;
+    height: 100%;
+    padding: 100px;
+    top:0px;
+    left: 0px;
+ 
+    display: flex;
+    border-style: none;
+    justify-content: start;
+    position: fixed;
+ 
+    flex-direction: column;
+    
+    background-color: white;
+    z-index: 3;
+    
+}
+
+.contenedor-formulario{
+
+    width: 100%;
+    height: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+  
+}
+
+.formulario-entradas{
+
+    border-style: none;
+    padding: 40px;
+
+    height: 100%;
+    
+    width: 100%;
+    min-width: 500px;
+    border-radius: 20px;
+    background-color: white;
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    
+    
+
+}
+
+.form-title{
+    height: 40px;
+    padding-left: 10px;
+    
+    border-style: none;
+    display: flex;
+    align-items: center;
+
+    font-size: 60px;
+}
+
+.form-input {
+    height: 12vh;
+    width: 100%;
+    font-size: 25px;
+    padding-left: 20px;
+    border-radius: 5px;
+    border-style: solid;
+
+    font-size: 40px;
+
+    padding: 5vh;
+}
+
+.form-btn-dibujar{
+    
+    
+    font-size: 40px;
+    
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+
+    align-self: flex-end;
+    background-color: blue;
+    padding: 40px 100px; 
+
+
+   
+    border-style: none;
+
+    font-weight: bold;
+    transition: transform 0.5s ease, box-shadow 0.3s ease; /* Agregar una transición a transform y box-shadow */
+}
+
+.form-btn-dibujar:hover {
+    /* Cambiar la posición del elemento hacia arriba al hacer hover 
+    
+        transform: translateY(-4px); 
+    */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 6px 10px 0 rgba(0, 0, 0, 0.24);
+}
+
+.shadow-8dp{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 6px 10px 0 rgba(0, 0, 0, 0.24);
+}
+
+.shadow-4dp {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+}
+
+.shadow-2dp{
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+.page-boxs {
+    height: 5vw;
+    width: 5vw;
+
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 10px;
+    background-color:orange;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 40px;
+   
+
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+.contenedor-resultados {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 50px;
+    font-weight: bold;
+    border-style: solid none none none;
+    margin-top: 50px;
+    padding-top: 50px;
+    width: 100%;
+    
+}
+
+.contenedor-ruta {
+    
+    display: flex;
+    justify-content:left;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 50px;
+    padding: 20px 0px;
+    border-style: none;
+
+}
+
+.resultados {
+    padding: 50px 100px;
+}
+
+.routed {
+    color: white;
+    background-color: black;
+}
+
+.reloadBTN {
+    
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    right: 50vw;
+    top:150px;
+    padding: 50px 100px;
+    border-radius: 50px;
+    font-size: 150px;
+
+    background-color: black;
+    color: white;
+    
+    cursor: pointer;
+
+}
